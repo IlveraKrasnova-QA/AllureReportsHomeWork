@@ -1,3 +1,5 @@
+package AllureTest;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -35,7 +37,7 @@ public class CheckForIssuesNameTest {
     }
 
     @Test
-    public void checkForIssuesNameWithStepsTest() {
+    public void checkForIssuesNameWithStepLyambdaTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Открываем главную страницу", () -> {
@@ -61,5 +63,16 @@ public class CheckForIssuesNameTest {
 
     }
 
+    @Test
+    public void checkForIssuesNameWithStepsTest() {
+        WebSteps steps = new WebSteps();
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
+        steps.openMainPage();
+        steps.searchForRepository(Repository);
+        steps.clickOnRepositoryLink(Repository);
+        steps.openIssuesTab();
+        steps.shouldBeIssue(Issues);
+
+    }
 }
