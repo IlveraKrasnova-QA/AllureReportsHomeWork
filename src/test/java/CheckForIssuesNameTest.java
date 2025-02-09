@@ -1,7 +1,6 @@
-import com.codeborne.selenide.Configuration;
+
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -10,14 +9,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 import static org.openqa.selenium.By.linkText;
 
-public class CheckForIssuesNameTest {
-
-    @BeforeAll
-    static void beforeAll(){
-        Configuration.baseUrl = "https://github.com/";
-        Configuration.browserSize = "1928x1080";
-        Configuration.pageLoadStrategy = "eager";
-    }
+public class CheckForIssuesNameTest extends TestBase {
 
     private static final String Repository = "IlveraKrasnova-QA/AllureReportsHomeWork";
     private static final String Issues = "simple issue";
