@@ -11,8 +11,8 @@ import static org.openqa.selenium.By.linkText;
 
 public class CheckForIssuesNameTest extends TestBase {
 
-    private static final String Repository = "IlveraKrasnova-QA/AllureReportsHomeWork";
-    private static final String Issues = "simple issue";
+    private static final String REPOSITORY = "IlveraKrasnova-QA/AllureReportsHomeWork";
+    private static final String ISSUES = "simple issue";
 
     @Test
     public void checkForIssuesNameSelenideTest() {
@@ -34,21 +34,21 @@ public class CheckForIssuesNameTest extends TestBase {
             open("");
                 });
 
-        step("Ищем репозиторий" + Repository, () -> {
+        step("Ищем репозиторий" + REPOSITORY, () -> {
             $("[class=search-input]").click();
-            $("[id=\"query-builder-test\"]").setValue(Repository).submit();
+            $("[id=\"query-builder-test\"]").setValue(REPOSITORY).submit();
         });
 
-        step("Кликаем на найденный реппозиторий" + Repository, () -> {
-            $(linkText(Repository)).click();
+        step("Кликаем на найденный реппозиторий" + REPOSITORY, () -> {
+            $(linkText(REPOSITORY)).click();
         });
 
         step("Открываем раздел Issues", () -> {
             $("#issues-tab").click();
         });
 
-        step("Находим нужный Issue" + Issues, () -> {
-            $("[class=Title-module__container--l9xi7]").shouldHave(text(Issues));
+        step("Находим нужный Issue" + ISSUES, () -> {
+            $("[class=Title-module__container--l9xi7]").shouldHave(text(ISSUES));
         });
 
     }
@@ -59,10 +59,10 @@ public class CheckForIssuesNameTest extends TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         steps.openMainPage();
-        steps.searchForRepository(Repository);
-        steps.clickOnRepositoryLink(Repository);
+        steps.searchForRepository(REPOSITORY);
+        steps.clickOnRepositoryLink(REPOSITORY);
         steps.openIssuesTab();
-        steps.shouldBeIssue(Issues);
+        steps.shouldBeIssue(ISSUES);
 
     }
 }
